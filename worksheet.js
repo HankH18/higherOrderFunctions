@@ -6,6 +6,13 @@
 // it should run the callback on each element in the array.
 // ----------------------------
 
+var forEach = function(array,callback) {
+	var retArr = []
+	for(var i = 0; i < array.length; i ++) {
+		retArr.push(callback(array[i]))
+	}
+}
+
 //  Part II
 // ----------------------------
 // write your own map() function.
@@ -13,7 +20,13 @@
 // it should return a new array, where every element in the 
 // original has been transformed by the callback. .
 // ----------------------------
-
+var map = function(array,callback) {
+	var retArr = []
+	for(var i = 0; i < array.length; i ++) {
+		retArr.push(callback(array[i]))
+	}
+	return retArr
+} 
 
 //  Part III
 // ----------------------------
@@ -22,7 +35,15 @@
 // it should return a new array, where elements have been 
 // kept or excluded according to the callback. 
 // ----------------------------
-
+var filter = function(array, callback) {
+	var retArr = []
+	for(var i = 0; i < array.length; i++) {
+		if(callback(array[i])) {
+			retArr.push(array[i])
+		}
+	}
+	return retArr
+}
 
 //  Part IV
 // ----------------------------
@@ -41,7 +62,13 @@
 
 // look at the tests for clarification.
 // ----------------------------
-
+var reduce = function(array, callback, value) {
+	var runTot = value
+	for (var i = 0; i < array.length; i++) {
+		runTot = callback(runTot, array[i])
+	}
+	return runTot
+}
 
 //  HARD MODE
 // ----------------------------
@@ -55,6 +82,10 @@ var people = [
     {name:"Jesse", alma_mater:"Univ of Texas - Austin"},
     {name:"Justin", alma_mater:"Univ of Florida"}
 ]
+
+people.sort(function(a,b) {
+    return a.name > b.name
+})
 
 // ----------------------------
 // Using array.map(), array.filter(), and array.sort() on the
